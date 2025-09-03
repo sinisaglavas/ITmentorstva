@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('amount');
-            $table->string('price');
-            $table->string('filename')->nullable();
+            $table->text('description')->nullable();
+            $table->unsignedInteger('amount'); // ne moze biti negativan broj
+            $table->float('price'); // decimal
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
