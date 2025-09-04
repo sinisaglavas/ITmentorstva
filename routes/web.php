@@ -12,3 +12,5 @@ Route::view('/about', 'about');
 
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'index']);
 //Route::view('/contact', 'contact');
+
+Route::get('/admin/all-contacts', [\App\Http\Controllers\ContactController::class, 'getAllContacts']);

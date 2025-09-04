@@ -5,13 +5,46 @@
 @endsection
 
 @section('sadrzajStranice')
-    <p>Ovo je SHOP stranica</p>
+    <div class="container">
+        <p>Ovo je SHOP stranica</p>
+        <table class="table table-primary">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+            @foreach($allProducts as $product)
+                <tr>
+                    <td>{{ $product->name }}</td>
+                    <td class="td">{{ $product->description }}</td>
+                    <td>{{ $product->amount }}</td>
+                    <td>{{ $product->price }}</td>
+                    <td>{{ $product->image }}</td>
+                </tr>
+            @endforeach
+        </table>
+        <h3>Zadnjih 6 proizvoda:</h3>
+        <table class="table table-secondary">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+            @foreach($descProducts as $singleProduct)
+                <tr>
+                    <td>{{ $singleProduct->name }}</td>
+                    <td class="td">{{ $singleProduct->description }}</td>
+                    <td>{{ $singleProduct->amount }}</td>
+                    <td>{{ $singleProduct->price }}</td>
+                    <td>{{ $singleProduct->image }}</td>
+                </tr>
+            @endforeach
+        </table>
 
-    @foreach($products as $product)
-        @if($product == 'Xiaomi 20+' || $product == 'Samsung Note 20+')
-            <p>{{ $product }} - Samo danas popust 20%</p>
-        @else
-            <p>{{ $product }}</p>
-        @endif
-    @endforeach
+    </div>
+
 @endsection
