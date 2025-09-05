@@ -1,0 +1,13 @@
+VEZBA:
+    - Upisati X proizvoda u tabelu "products"
+    - Ispisati sve proizvode na stranici shop
+
+
+DOMACI:
+    - Napraviti stranicu /admin/add-product
+     * Prikazati formu za dodavanje proizvoda sa svim poljima iz baze
+     * Napraviti logiku za snimanje tih podataka u tabelu "products" (sa drugom rutom)
+     * Obavezno: validacija podataka i prikazivanje gresaka
+
+    - Napraviti stranicu "/admin/products"
+     * Prikazati sve proizvode iz baze i sve njihove informacije u HTML tabeli

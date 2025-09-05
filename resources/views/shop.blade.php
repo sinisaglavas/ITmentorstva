@@ -37,7 +37,7 @@
             @foreach($descProducts as $singleProduct)
                 <tr>
                     <td>{{ $singleProduct->name }}</td>
-                    <td class="td">{{ $singleProduct->description }}</td>
+                    <td>{{ $singleProduct->description }}</td>
                     <td>{{ $singleProduct->amount }}</td>
                     <td>{{ $singleProduct->price }}</td>
                     <td>{{ $singleProduct->image }}</td>

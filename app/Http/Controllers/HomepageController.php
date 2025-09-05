@@ -8,8 +8,8 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        $currentHour = date('h');
-        $currentTime = date('h:i:s');
+        $currentHour = date('H');
+        $currentTime = date('H:i:s');
         return view('welcome', compact('currentTime', 'currentHour'));
     }
 }
