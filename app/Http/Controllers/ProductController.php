@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 
@@ -10,9 +10,9 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Products::all();
+        $products = Product::all();
 
-        return view('products', compact('products'));
+        return view('allProducts', compact('products'));
     }
 
     public function addProductForm()
@@ -29,7 +29,7 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // image → validira da je fajl slika / mimes → dozvoljeni formati
             'description' => 'required|string'
         ]);
-        Products::create([
+        Product::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'amount' => $request->get('amount'),
@@ -37,6 +37,14 @@ class ProductController extends Controller
             'image' => $request->get('image')
         ]);
 
-        return redirect('/admin/products');
+        return redirect('/admin/all-products');
+    }
+
+    public function delete($product)
+    {
+        $singleProduct = Product::where(['id' => $product])->first();
+        $singleProduct->delete();
+
+        return redirect()->back();
     }
 }

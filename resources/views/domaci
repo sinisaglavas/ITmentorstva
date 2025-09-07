@@ -11,3 +11,10 @@ DOMACI:
 
     - Napraviti stranicu "/admin/products"
      * Prikazati sve proizvode iz baze i sve njihove informacije u HTML tabeli
+
+DOMACI (7.21):
+    - Stranica "/admin/all-contacts"
+        * Dodati da izgleda isto kao "/admin/all-products"
+        * ->name() kod rute (named routes)
+        * kako da drugacije ispisemo rute
+
