@@ -6,6 +6,7 @@
 
 @section('sadrzajStranice')
     <div class="container">
+        <p>Svi KONTAKTI</p>
         <table class="table table-bordered">
             <tr class="text-center">
                 <th>Email</th>
@@ -19,8 +20,13 @@
                     <td>{{ $contact->subject }}</td>
                     <td>{{ $contact->message }}</td>
                     <td>
-                        <a href="{{ route('deleteContact', [$contact->id]) }}" class="btn btn-danger">Delete</a>
-                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('deleteContact', ['contact' => $contact->id]) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('updateContactForm', ['contact' => $contact->id]) }}" class="btn btn-primary">Edit</a>
+                        @if(session()->has('message'))
+                            <div class="alert alert-success p-0">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
                     </td>
                 </tr>
             @endforeach

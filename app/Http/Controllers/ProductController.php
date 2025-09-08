@@ -15,26 +15,21 @@ class ProductController extends Controller
         return view('allProducts', compact('products'));
     }
 
-    public function addProductForm()
-    {
-        return view('addProduct');
-    }
-
     public function addProduct(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => 'required|string|unique:products', // dodato da ime mora biti jedinstveno - ne moze biti ponovo upisano isto ime
             'amount' => 'required|integer',
             'price' => 'required|numeric', // celi i decimalni brojevi
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // image → validira da je fajl slika / mimes → dozvoljeni formati
-            'description' => 'required|string'
+            'description' => 'required|string',
         ]);
         Product::create([
             'name' => $request->get('name'),
             'description' => $request->get('description'),
             'amount' => $request->get('amount'),
             'price' => $request->get('price'),
-            'image' => $request->get('image')
+            'image' => $request->get('image'),
         ]);
 
         return redirect('/admin/all-products');
@@ -45,6 +40,34 @@ class ProductController extends Controller
         $singleProduct = Product::where(['id' => $product])->first();
         $singleProduct->delete();
 
-        return redirect()->back();
+        return redirect()->route('adminAllProducts');
+    }
+
+    public function updateProductForm($product)
+    {
+        $singleProduct = Product::findOrFail($product);
+
+        return view('updateProductForm', compact('singleProduct'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $request->validate([
+            'name' => 'required|string|',
+            'amount' => 'required|integer',
+            'price' => 'required|numeric', // celi i decimalni brojevi
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'description' => 'required|string',
+        ]);
+
+        $product->update([
+            'name' => $request->get('name'),
+            'amount' => $request->get('amount'),
+            'price' => $request->get('price'),
+            'image' => $request->get('image'),
+            'description' => $request->get('description'),
+        ]);
+
+        return redirect()->route('adminAllProducts');
     }
 }

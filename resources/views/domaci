@@ -18,3 +18,8 @@ DOMACI (7.21):
         * ->name() kod rute (named routes)
         * kako da drugacije ispisemo rute
 
+DOMACI (8.20)
+    - Edit proizvoda
+    - Edit contact
+    * Hint: /admin/product/{productId}
+    ->productId ->query
