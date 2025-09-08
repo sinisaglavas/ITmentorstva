@@ -8,19 +8,27 @@
     <p>Ovo je CONTACT stranica</p>
     <div class="container mb-3">
         <div class="col-6">
-            <form >
+            <form action="/send-contact" method="post">
+                @if($errors->any()) {{-- Ako postoji ikakva greska --}}
+                <p class="text-danger">Greska: {{ $errors->first() }}</p> {{-- Ako postoji vise gresaka ispisi samo prvu gresku --}}
+                @endif
+
+                @csrf
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                           value="{{ old('email') }}">
                     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputSubject1" class="form-label">Subject</label>
-                    <input type="text" name="subject" class="form-control" id="exampleInputSubject1">
+                    <input type="text" name="subject" class="form-control" id="exampleInputSubject1"
+                           value="{{ old('subject') }}">
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputMessage1" class="form-label">Message</label>
-                    <input type="text" name="message" class="form-control" id="exampleInputMessage1">
+                    <input type="text" name="message" class="form-control" id="exampleInputMessage1"
+                           value="{{ old('message') }}">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
