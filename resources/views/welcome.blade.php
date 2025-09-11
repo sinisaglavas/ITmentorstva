@@ -5,12 +5,6 @@
 @endsection
 
 @section('sadrzajStranice')
-
-    @if($currentHour >= 0 && $currentHour <=12)
-        <p>Dobro jutro</p>
-    @else
-        <p>Dobar dan</p>
-    @endif
     <p>Ovo je GLAVNA stranica</p>
 
     <form action="/send-contact" method="post" class="m-3">

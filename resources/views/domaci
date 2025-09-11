@@ -23,3 +23,9 @@ DOMACI (8.20)
     - Edit contact
     * Hint: /admin/product/{productId}
     ->productId ->query
+
+DOMACI (9.17)
+    - Napraviti novi projekat
+    - Povezati projekat na GIT
+    - Napraviti AUTH
+        BONUS: Napraviti dark AUTH

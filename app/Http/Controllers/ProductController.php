@@ -43,11 +43,9 @@ class ProductController extends Controller
         return redirect()->route('adminAllProducts');
     }
 
-    public function updateProductForm($product)
+    public function updateProductForm(Product $product)
     {
-        $singleProduct = Product::findOrFail($product);
-
-        return view('updateProductForm', compact('singleProduct'));
+        return view('updateProductForm', compact('product'));
     }
 
     public function update(Request $request, Product $product)

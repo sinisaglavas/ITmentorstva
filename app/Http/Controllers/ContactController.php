@@ -48,11 +48,9 @@ class ContactController extends Controller
         return redirect()->route('adminAllContacts');
     }
 
-    public function updateContactForm($contact)
+    public function updateContactForm(Contact $contact)
     {
-        $singleContact = Contact::findOrFail($contact);
-
-        return view('updateContactForm', compact('singleContact'));
+        return view('updateContactForm', compact('contact'));
     }
 
     public function update(Request $request, Contact $contact)

@@ -1,0 +1,23 @@
+OSNOVNI KORACI ZA KREIRANJE PROJEKTA SA AUTENTIFIKACIJOM I POVEZIVANJE SA GITHUB REPOZITORIJUMOM:
+
+1. Instaliranje Laravela
+    * Napraviti bazu podataka
+    * composer create-project laravel/laravel nazivProjekta
+
+2. Podesavanje GIT-a
+    * Napraviti novi repo na GitHub-u
+    * PhpStorm -> VCS -> enable version control integration -> git (dugme vcs prelazi u git)
+    * PhpStorm -> Git -> remote origin -> add -> unesi link do Git repozitorijuma
+    * Commit (CTRL + K) -> Commit and push -> push
+
+3. Laravel AUTH (komande)
+    * composer require laravel/breeze --dev
+        - Instalira breeze paket za auth
+    * php artisan breeze:install blade
+        - Pravi neophodne blade fajlove za AUTH (HTML kod)
+            * register.blade.php
+            * login.blade.php
+    * php artisan migrate
+        - Pravi potrebne tabele u bazi
+    * npm install
+    * npm run dev (npm sluzi za instalaciju JS i CSS)
