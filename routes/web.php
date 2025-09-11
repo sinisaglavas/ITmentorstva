@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdminCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,7 +25,7 @@ Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index']);
 Route::view('/about', 'about');
 Route::get('/contact', [ContactController::class, 'index']);
 
-Route::middleware('auth')->prefix('admin')->group(function () { // prefix - dodaje zajednicki naziv na sve rute
+Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function () { // prefix - dodaje zajednicki naziv na sve rute
     Route::post('/send-contact', [ContactController::class, 'sendContact']);
     Route::get('/all-contacts', [ContactController::class, 'getAllContacts'])
         ->name('adminAllContacts');
