@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\ExchangeRate;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Http;
@@ -13,7 +14,7 @@ class CurrentExchangeRate extends Command
      *
      * @var string
      */
-    protected $signature = 'app:current-exchange-rate {currency=USD}';
+    protected $signature = 'app:current-exchange-rate';
 
     /**
      * The console command description.
@@ -27,10 +28,27 @@ class CurrentExchangeRate extends Command
      */
     public function handle()
     {
-        $currency = 'EUR';
-        //$currency = $this->argument('currency');
-        $response = Http::get('https://kurs.resenje.org/api/v1/currencies/'.$currency.'/rates/today');
-        dd($response->json()['exchange_middle']);
+        $currencies = ['USD', 'EUR', 'RUB'];
 
+        foreach ($currencies as $currency)
+        {
+            $response = Http::get('https://kurs.resenje.org/api/v1/currencies/'.$currency.'/rates/today');
+            $jsonResponse = $response->json();
+
+            if (isset($jsonResponse['error']))
+            {
+                $this->output->error($jsonResponse['error']['message']);
+                return;
+            }
+
+            $value = $response->json()['exchange_middle'];
+            ExchangeRate::create([
+                'currency' => $currency,
+                'value' => $value,
+            ]);
+
+        }
+        $this->output->comment('Command finished! All currencies are entered into the database!');
+        return;
     }
 }

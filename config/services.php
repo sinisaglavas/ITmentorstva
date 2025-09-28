@@ -35,10 +35,4 @@ return [
         ],
     ],
 
-    'currencyapi' => [
-        'key' => env('EXCHANGERATES_API_KEY'),
-        'base_url' => 'https://api.exchangeratesapi.io/v1',
-        'latest_rates' => '/latest',
-    ],
-
 ];
