@@ -29,3 +29,13 @@ DOMACI (9.17)
     - Povezati projekat na GIT
     - Napraviti AUTH
         BONUS: Napraviti dark AUTH
+
+//////////////////////////////////////
+
+Domaci 20.16
+    - Istraziti i pronaci API preko koga mozemo da dobijemo:
+        * Trenutni danasnji kurs evra
+        * Trenutni kurs dolara
+    - Napraviti komandu u drugom projektu webShop (kod mene prviDomaci) projektu
+        * Tamo ce pozvati taj API i prikazati te podatke u terminalu, ne na stranici
+
