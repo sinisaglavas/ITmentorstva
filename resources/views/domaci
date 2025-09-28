@@ -39,3 +39,5 @@ Domaci 20.16
     - Napraviti komandu u drugom projektu webShop (kod mene prviDomaci) projektu
         * Tamo ce pozvati taj API i prikazati te podatke u terminalu, ne na stranici
 
+Vezba 21.6
+    - Proveriti pre unosa vrednosti valuta, da li su ti podaci vec uneti
