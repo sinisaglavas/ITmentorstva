@@ -29,9 +29,7 @@ class CurrentExchangeRate extends Command
      */
     public function handle()
     {
-        $currencies = ['USD', 'EUR', 'RUB'];
-
-        foreach ($currencies as $currency)
+        foreach (ExchangeRate::AVAILABLE_CURRENCIES as $currency)
         {
             $response = Http::get('https://kurs.resenje.org/api/v1/currencies/'.$currency.'/rates/today');
             $jsonResponse = $response->json();
@@ -55,6 +53,6 @@ class CurrentExchangeRate extends Command
             ]);
 
         }
-        $this->output->comment('Command finished! All currencies are entered into the database!');
+        $this->output->comment('All currencies are entered into the database!');
     }
 }
