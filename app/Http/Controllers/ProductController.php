@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveProductRequest;
 use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -22,16 +23,8 @@ class ProductController extends Controller
         return view('allProducts', compact('products'));
     }
 
-    public function addProduct(Request $request)
+    public function addProduct(SaveProductRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|unique:products', // dodato da ime mora biti jedinstveno - ne moze biti ponovo upisano isto ime
-            'amount' => 'required|integer',
-            'price' => 'required|numeric', // celi i decimalni brojevi
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // image → validira da je fajl slika / mimes → dozvoljeni formati
-            'description' => 'required|string',
-        ]);
-
         $this->productRepo->createNew($request); // koristimo ProductRepository i metodu unutar njega
 
         return redirect('/admin/all-products');
@@ -60,13 +53,7 @@ class ProductController extends Controller
             'description' => 'required|string',
         ]);
 
-        $product->update([
-            'name' => $request->get('name'),
-            'amount' => $request->get('amount'),
-            'price' => $request->get('price'),
-            'image' => $request->get('image'),
-            'description' => $request->get('description'),
-        ]);
+        $this->productRepo->editProduct($product, $request);
 
         return redirect()->route('adminAllProducts');
     }
