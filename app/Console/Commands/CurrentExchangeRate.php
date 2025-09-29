@@ -29,15 +29,6 @@ class CurrentExchangeRate extends Command
      */
     public function handle()
     {
-        $today = Carbon::today(); // samo datum, bez vremena
-        $lastUpdate = ExchangeRate::whereDate('created_at', $today)->first();
-
-        if ($lastUpdate !== null)
-        {
-            $this->output->comment("This data was previously entered for today's date!");
-            return;
-        }
-
         $currencies = ['USD', 'EUR', 'RUB'];
 
         foreach ($currencies as $currency)
@@ -49,6 +40,12 @@ class CurrentExchangeRate extends Command
             {
                 $this->output->error($jsonResponse['error']['message']);
                 return;
+            }
+
+            $lastUpdate = ExchangeRate::getCurrencyForToday($currency);
+            if ($lastUpdate !== null)
+            {
+                continue;
             }
 
             $value = $response->json()['exchange_middle'];
