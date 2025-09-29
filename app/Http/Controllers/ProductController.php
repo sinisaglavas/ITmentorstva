@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 
 class ProductController extends Controller
 {
+    private $productRepo;
+    public function __construct()
+    {
+        $this->productRepo = new ProductRepository();
+    }
+
     public function index()
     {
         $products = Product::all();
@@ -24,20 +31,15 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048', // image → validira da je fajl slika / mimes → dozvoljeni formati
             'description' => 'required|string',
         ]);
-        Product::create([
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'amount' => $request->get('amount'),
-            'price' => $request->get('price'),
-            'image' => $request->get('image'),
-        ]);
+
+        $this->productRepo->createNew($request); // koristimo ProductRepository i metodu unutar njega
 
         return redirect('/admin/all-products');
     }
 
     public function delete($product)
     {
-        $singleProduct = Product::where(['id' => $product])->first();
+        $singleProduct = $this->productRepo->getProductById($product);
         $singleProduct->delete();
 
         return redirect()->route('adminAllProducts');

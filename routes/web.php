@@ -25,12 +25,18 @@ Route::get('/shop', [\App\Http\Controllers\ShopController::class, 'index']);
 Route::view('/about', 'about');
 Route::get('/contact', [ContactController::class, 'index']);
 
+Route::middleware('auth')->group(function (){
+    Route::post('/add-product', [ProductController::class, 'addProduct']);
+
+});
+
+
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function () { // prefix - dodaje zajednicki naziv na sve rute
     Route::post('/send-contact', [ContactController::class, 'sendContact']);
     Route::get('/all-contacts', [ContactController::class, 'getAllContacts'])
         ->name('adminAllContacts');
-    Route::post('/add-product', [ProductController::class, 'addProduct']);
-    Route::view('/add-product','addProduct');
+
+    Route::view('/add-product-form','addProductForm');
     Route::put('/update-contact/{contact}', [ContactController::class, 'update'])
         ->name('updateContact');
     Route::get('/all-products', [ProductController::class, 'index'])
