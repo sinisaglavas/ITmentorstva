@@ -27,12 +27,12 @@ Route::get('/contact', [ContactController::class, 'index']);
 
 Route::middleware('auth')->group(function (){
     Route::post('/add-product', [ProductController::class, 'addProduct']);
+    Route::post('/send-contact', [ContactController::class, 'sendContact']);
 
 });
 
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function () { // prefix - dodaje zajednicki naziv na sve rute
-    Route::post('/send-contact', [ContactController::class, 'sendContact']);
     Route::get('/all-contacts', [ContactController::class, 'getAllContacts'])
         ->name('adminAllContacts');
 

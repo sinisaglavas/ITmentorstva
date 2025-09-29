@@ -6,7 +6,6 @@ use App\Http\Requests\SaveProductRequest;
 use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Return_;
 
 class ProductController extends Controller
 {

@@ -41,3 +41,14 @@ Domaci 20.16
 
 Vezba 21.6
     - Proveriti pre unosa vrednosti valuta, da li su ti podaci vec uneti
+
+VAZNO za programere koji drze do sebe :)
+    - Snimanje proizvoda
+        * Middleware kontrolise da li korisnik moze da snimi proizvod (da li ste ADMIN ili ne)
+        * Request da proveri podatke
+        * Repository upise podatke preko modela u bazu
+        * Controller SAMO da vrati korisnika na neku stranicu
+
+Domaci 21.20
+    - U svim kontrolerima izmeniti $request->validate([...]); da ide preko Request-a
+    BONUS: Uraditi sve query-je preko repozitorijuma

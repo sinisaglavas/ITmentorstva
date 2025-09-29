@@ -31,16 +31,15 @@ class ProductRepository
     public function getProductById($id)
     {
         return $this->productModel->where(['id' => $id])->first();
-
     }
 
     public function editProduct($product, $request)
     {
         $product->name = $request->get('name');
-            $product->amount = $request->get('amount');
-            $product->price = $request->get('price');
-            $product->image = $request->get('image');
-            $product->description = $request->get('description');
-            $product->save();
+        $product->amount = $request->get('amount');
+        $product->price = $request->get('price');
+        $product->image = $request->get('image');
+        $product->description = $request->get('description');
+        $product->save();
     }
 }
