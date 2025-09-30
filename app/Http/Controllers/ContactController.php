@@ -27,7 +27,7 @@ class ContactController extends Controller
     {
         $this->contactRepo->createNew($request);
 
-        return redirect('/shop');
+        return redirect('/admin/contact/all');
     }
 
     public function delete($contact)
