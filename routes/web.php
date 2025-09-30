@@ -7,9 +7,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Middleware\AdminCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () { return view('dashboard'); })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -17,37 +15,28 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::view('/', 'welcome');
 Route::view('/add-product-form','addProductForm');
 Route::view('/about', 'about');
 Route::view('/contact',  'contact');
 Route::get('/shop', [ShopController::class, 'index']);
 
-Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function () { // prefix - dodaje zajednicki naziv na sve rute
+Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('admin')->group(function () {
     Route::controller(ContactController::class)->group(function (){
-        Route::post('/send-contact', 'sendContact');
-        Route::get('/all-contacts', 'getAllContacts')
-            ->name('adminAllContacts');
-        Route::put('/update-contact/{contact}', 'update')
-            ->name('updateContact');
-        Route::get('/delete-contact/{contact}','delete')
-            ->name('deleteContact');
-        Route::get('/update-contact-form/{contact}','updateContactForm')
-            ->name('updateContactForm');
+        Route::post('/contact/send', 'sendContact')->name('sendContact');
+        Route::get('/contacts', 'getAllContacts')->name('adminAllContacts');
+        Route::put('/contact/update/{contact}', 'update')->name('updateContact');
+        Route::get('/contact/delete/{contact}','delete')->name('deleteContact');
+        Route::get('/contact/update/form/{contact}','updateContactForm')->name('updateContactForm');
     });
     Route::controller(ProductController::class)->group(function ()
     {
-        Route::post('/add-product','addProduct');
-        Route::get('/all-products', 'index')
-            ->name('adminAllProducts');
-        Route::get('/delete-products/{product}','delete')
-            ->name('deleteProduct');
-        Route::get('/update-product-form/{product}','updateProductForm')
-            ->name('updateProductForm');
-        Route::put('/update-product/{product}','update')
-            ->name('updateProduct');
+        Route::post('/product/add','addProduct')->name('addProduct');
+        Route::get('/products', 'index')->name('adminAllProducts');
+        Route::get('/products/delete/{product}','delete')->name('deleteProduct');
+        Route::get('/product/update/form/{product}','updateProductForm')->name('updateProductForm');
+        Route::put('/product/update/{product}','update')->name('updateProduct');
     });
 });
 
-require __DIR__.'/auth.php'; // mora biti na kraju - sluzi da bi ucitalo autentifikacione rute
+require __DIR__.'/auth.php'; // mora biti na kraju - ucitava autentifikacione rute
