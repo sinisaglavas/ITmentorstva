@@ -27,7 +27,7 @@ class ProductController extends Controller
     {
         $this->productRepo->createNew($request); // koristimo ProductRepository i metodu unutar njega
 
-        return redirect('/admin/all-products');
+        return redirect('/admin/product/all');
     }
 
     public function delete($product)
@@ -35,7 +35,7 @@ class ProductController extends Controller
         $singleProduct = $this->productRepo->getProductById($product);
         $singleProduct->delete();
 
-        return redirect()->route('adminAllProducts');
+        return redirect('/admin/product/all');
     }
 
     public function updateProductForm(Product $product)
@@ -47,6 +47,6 @@ class ProductController extends Controller
     {
         $this->productRepo->editProduct($product, $request);
 
-        return redirect()->route('adminAllProducts');
+        return redirect('/admin/product/all');
     }
 }

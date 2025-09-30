@@ -21,7 +21,7 @@
                     <td>{{ $contact->message }}</td>
                     <td>
                         <a href="{{ route('contact.delete', ['contact' => $contact->id]) }}" class="btn btn-danger">Delete</a>
-                        <a href="{{ route('contact.update', ['contact' => $contact->id]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('contact.update.form', ['contact' => $contact->id]) }}" class="btn btn-primary">Edit</a>
                         @if(session()->has('message'))
                             <div class="alert alert-success p-0">
                                 {{ session()->get('message') }}

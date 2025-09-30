@@ -39,7 +39,7 @@ class ContactController extends Controller
         }
         $singleContact->delete();
 
-        return redirect()->route('adminAllContacts');
+        return redirect('admin/contact/all');
     }
 
     public function updateContactForm(Contact $contact)
@@ -51,6 +51,6 @@ class ContactController extends Controller
     {
         $this->contactRepo->editProduct($contact, $request);
 
-        return redirect()->route('adminAllContacts');
+        return redirect('admin/contact/all');
     }
 }
