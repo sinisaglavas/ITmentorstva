@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Models\Product;
 use App\Repositories\ProductRepository;
 use Illuminate\Http\Request;
@@ -42,16 +43,8 @@ class ProductController extends Controller
         return view('updateProductForm', compact('product'));
     }
 
-    public function update(Request $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
-        $request->validate([
-            'name' => 'required|string|',
-            'amount' => 'required|integer',
-            'price' => 'required|numeric', // celi i decimalni brojevi
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
-            'description' => 'required|string',
-        ]);
-
         $this->productRepo->editProduct($product, $request);
 
         return redirect()->route('adminAllProducts');

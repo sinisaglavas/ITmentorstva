@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveContactRequest;
+use App\Http\Requests\UpdateContactRequest;
 use App\Models\Contact;
 use App\Repositories\ContactRepository;
 use Illuminate\Http\Request;
@@ -51,13 +52,8 @@ class ContactController extends Controller
         return view('updateContactForm', compact('contact'));
     }
 
-    public function update(Request $request, Contact $contact)
+    public function update(UpdateContactRequest $request, Contact $contact)
     {
-        $request->validate([
-            'email' => 'required|string',
-            'subject' => 'required|string',
-            'message' => 'required|string|min:5',
-        ]);
         $this->contactRepo->editProduct($contact, $request);
 
         return redirect()->route('adminAllContacts');
