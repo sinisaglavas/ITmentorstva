@@ -16,11 +16,6 @@ class ContactController extends Controller
         $this->contactRepo = new ContactRepository();
     }
 
-    public function index()
-    {
-        return view('contact');
-    }
-
     public function getAllContacts()
     {
         $allContacts = Contact::all();

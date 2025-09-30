@@ -52,3 +52,6 @@ VAZNO za programere koji drze do sebe :)
 Domaci 21.20
     - U svim kontrolerima izmeniti $request->validate([...]); da ide preko Request-a
     BONUS: Uraditi sve query-je preko repozitorijuma
+
+Vezba 22.6
+    - Grupisati sve putanje u web.php i dovesti ih u red
