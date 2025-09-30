@@ -6,7 +6,7 @@
 
 @section('sadrzajStranice')
 
-    <form action="{{ route('addProduct') }}" method="post" class="m-3" enctype="multipart/form-data">
+    <form action="{{ route('product.add') }}" method="post" class="m-3" enctype="multipart/form-data">
         @if($errors->any()) {{-- Ako postoji ikakva greska --}}
         <p class="text-danger">Greska: {{ $errors->first() }}</p> {{-- Ako postoji vise gresaka ispisi samo prvu gresku --}}
         @endif

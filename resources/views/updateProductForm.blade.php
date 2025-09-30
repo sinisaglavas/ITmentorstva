@@ -8,7 +8,7 @@
     <p>Ovo je stranica za promenu podataka odabranog PROIZVODA!</p>
     <div class="container mb-3">
         <div class="col-6">
-            <form action="{{ route('updateProduct', ['product' => $product->id]) }}" method="post">
+            <form action="{{ route('product.update', ['product' => $product->id]) }}" method="post">
                 @if($errors->any()) {{-- Ako postoji ikakva greska --}}
                 <p class="text-danger">Greska: {{ $errors->first() }}</p> {{-- Ako postoji vise gresaka ispisi samo prvu gresku --}}
                 @endif
@@ -40,7 +40,6 @@
                     <button type="submit" class="btn btn-primary form-control">Potvrdi promene</button>
             </form>
         </div>
-
     </div>
 
 @endsection

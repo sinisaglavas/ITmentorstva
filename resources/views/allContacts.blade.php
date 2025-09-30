@@ -20,8 +20,8 @@
                     <td>{{ $contact->subject }}</td>
                     <td>{{ $contact->message }}</td>
                     <td>
-                        <a href="{{ route('deleteContact', ['contact' => $contact->id]) }}" class="btn btn-danger">Delete</a>
-                        <a href="{{ route('updateContactForm', ['contact' => $contact->id]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ route('contact.delete', ['contact' => $contact->id]) }}" class="btn btn-danger">Delete</a>
+                        <a href="{{ route('contact.update', ['contact' => $contact->id]) }}" class="btn btn-primary">Edit</a>
                         @if(session()->has('message'))
                             <div class="alert alert-success p-0">
                                 {{ session()->get('message') }}
@@ -30,7 +30,6 @@
                     </td>
                 </tr>
             @endforeach
-
         </table>
     </div>
 

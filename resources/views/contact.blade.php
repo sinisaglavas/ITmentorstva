@@ -8,7 +8,7 @@
     <p>Ovo je CONTACT stranica</p>
     <div class="container mb-3">
         <div class="col-6">
-            <form action="{{ route('sendContact') }}" method="post">
+            <form action="{{ route('contact.send') }}" method="post">
                 @if($errors->any()) {{-- Ako postoji ikakva greska --}}
                 <p class="text-danger">Greska: {{ $errors->first() }}</p> {{-- Ako postoji vise gresaka ispisi samo prvu gresku --}}
                 @endif
