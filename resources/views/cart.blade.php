@@ -10,9 +10,9 @@
             <div class="d-flex justify-content-center mt-2">
                 @foreach($cart as $product)
                     <div class="card" style="width: 30rem;">
-                        <p>{{ $product['product_id'] }}</p>
+                        <p>{{ $product['product_name'] }}</p>
                         <div class="card-body">
-                            <p class="card-text">{{ $product['amount'] }}</p>
+                            <p class="card-text">{{ $product['amount'] }} kom.</p>
                         </div>
                     </div>
                 @endforeach

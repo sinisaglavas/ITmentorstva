@@ -76,3 +76,8 @@ Vezba 23.12
 
 Vezba 23.14
     - Dodavanje u korpu bez brisanja prethodno odabranog proizvoda
+
+Domaci 23.18
+    - Prilikom dodavanja u korpu proveriti da li ima dovoljno stavki na stanju
+        * Ako je poruceno vise od stanja na lageru (bazi) ispisati nemamo dovoljno ovog proizvoda
+    - Na stranici /cart izvuci ime proizvoda iz baze, umesto id produkta treba ime proizvoda

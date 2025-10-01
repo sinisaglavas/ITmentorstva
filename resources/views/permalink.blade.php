@@ -31,6 +31,15 @@
                 </form>
             </div>
         </div>
+        <div class="row d-flex justify-content-center mt-2">
+            <div class="col-5">
+                @if(session()->has('message'))
+                    <div class="alert alert-success text-center fw-bold fs-6">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+            </div>
+        </div>
     </div>
 
 @endsection
