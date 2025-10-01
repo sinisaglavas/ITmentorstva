@@ -21,6 +21,7 @@ Route::view('/add/product/form','addProductForm');
 Route::view('/about', 'about');
 Route::view('/contact',  'contact');
 Route::get('/shop', [ShopController::class, 'index']);
+Route::get('/product/{product}', [ProductController::class, 'permalink'])->name('product.permalink');
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('/admin')->group(function ()
 {
