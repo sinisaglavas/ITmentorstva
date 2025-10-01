@@ -73,3 +73,6 @@ Vezba 23.6
 Vezba 23.12
     - Napraviti stranicu /cart -> prikazati sve proizvode iz korpe
     - Kada se doda proizvod u korpu redirektovati na /cart
+
+Vezba 23.14
+    - Dodavanje u korpu bez brisanja prethodno odabranog proizvoda
