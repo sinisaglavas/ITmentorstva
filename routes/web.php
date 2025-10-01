@@ -5,6 +5,7 @@ use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\ShoppingCartController;
 use App\Http\Middleware\AdminCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,8 @@ Route::view('/about', 'about');
 Route::view('/contact',  'contact');
 Route::get('/shop', [ShopController::class, 'index']);
 Route::get('/product/{product}', [ProductController::class, 'permalink'])->name('product.permalink');
+Route::post('/cart/add', [ShoppingCartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart', [ShoppingCartController::class, 'index'])->name('cart.index');
 
 Route::middleware(['auth', AdminCheckMiddleware::class])->prefix('/admin')->group(function ()
 {

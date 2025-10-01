@@ -69,3 +69,7 @@ Vezba 23.6
     - Na stranici /shop pored svakog proivoda dodati dugme 'pogledaj proizvod'
         * Kada se klikne na to dugme otvara se stranica /product/id
         * Na toj stranici se prikazuju sve info o tom proizvodu
+
+Vezba 23.12
+    - Napraviti stranicu /cart -> prikazati sve proizvode iz korpe
+    - Kada se doda proizvod u korpu redirektovati na /cart

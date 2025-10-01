@@ -21,6 +21,15 @@
                     </div>
                 </div>
             </div>
+            <div class="d-flex justify-content-center mt-2">
+                <form action="{{ route('cart.add') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="id" value="{{ $product->id }}">
+                    <label for="amount" class="badge bg-secondary">Količina</label>
+                    <input type="number" min="0" name="amount" class="form-control" id="amount">
+                    <input type="submit" class="form-control mt-2">
+                </form>
+            </div>
         </div>
     </div>
 
