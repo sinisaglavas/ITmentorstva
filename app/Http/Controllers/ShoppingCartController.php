@@ -22,6 +22,7 @@ class ShoppingCartController extends Controller
         $products = Product::whereIn('id', $allProducts)->get();
 
         return view('cart', [
+            'cart' => Session::get('product'),
             'products' => $products,
         ]);
     }
