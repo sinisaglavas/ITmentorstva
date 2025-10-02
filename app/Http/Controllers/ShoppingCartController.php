@@ -11,8 +11,18 @@ class ShoppingCartController extends Controller
 {
     public function index()
     {
+//        $allProducts = [];
+//        foreach (Session::get('product') as $cartItem)
+//        {
+//            $allProducts[] = $cartItem['product_id']; // izvlacimo samo 'id' proizvoda
+//        }
+//        $products = Product::whereIn('id', $allProducts)->get(); // whereIn za assoc array
+
+        $allProducts = array_column(Session::get('product'), 'product_id'); // chatGPT
+        $products = Product::whereIn('id', $allProducts)->get();
+
         return view('cart', [
-            'cart' => Session::get('product'),
+            'products' => $products,
         ]);
     }
 
@@ -21,13 +31,14 @@ class ShoppingCartController extends Controller
         $product = Product::findOrFail($request->get('id'));
         $checkAmount = $product->amount;
         $cartAmount = $request->get('amount');
-        if ($checkAmount < $cartAmount)
+        if ($product && $checkAmount < $cartAmount) // provera produkta i kolicine produkta
         {
-            return redirect()->back()->with('message', 'The quantity on stock is not sufficient! Max: ' .$checkAmount.' pcs');
+            return redirect()->back()
+                ->with('message', 'The quantity on stock is not sufficient! Max: ' .$checkAmount.' pcs');
         }
 
         Session::push('product', [
-            'product_name' => $product->name,
+            'product_id' => $product->id,
             'amount' => $request->amount,
         ]);
 
