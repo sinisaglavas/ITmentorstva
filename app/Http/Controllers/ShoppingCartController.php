@@ -11,19 +11,22 @@ class ShoppingCartController extends Controller
 {
     public function index()
     {
-//        $allProducts = [];
-//        foreach (Session::get('product') as $cartItem)
-//        {
-//            $allProducts[] = $cartItem['product_id']; // izvlacimo samo 'id' proizvoda
-//        }
-//        $products = Product::whereIn('id', $allProducts)->get(); // whereIn za assoc array
-
-        $allProducts = array_column(Session::get('product'), 'product_id'); // chatGPT
-        $products = Product::whereIn('id', $allProducts)->get();
+        $combined = [];
+        foreach (Session::get('product') as $cartItem)
+        {
+            $product = Product::firstWhere('id', $cartItem['product_id']);
+            $combined[] = [
+                'product_name' => $product->name,
+                'product_description' => $product->description,
+                'product_amount' => $cartItem['amount'],
+                'product_price' => $product->price,
+                'product_image' => $product->image,
+                'total_price' => $cartItem['amount'] * $product->price,
+            ];
+        }
 
         return view('cart', [
-            'cart' => Session::get('product'),
-            'products' => $products,
+            'cart' => $combined,
         ]);
     }
 
