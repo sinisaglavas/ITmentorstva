@@ -12,6 +12,10 @@ class ShoppingCartController extends Controller
     public function index()
     {
         $combined = [];
+        if (Session::get('product') == null)
+        {
+            return redirect()->back();
+        }
         foreach (Session::get('product') as $cartItem)
         {
             $product = Product::firstWhere('id', $cartItem['product_id']);

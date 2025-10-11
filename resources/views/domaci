@@ -82,5 +82,31 @@ Domaci 23.18
         * Ako je poruceno vise od stanja na lageru (bazi) ispisati nemamo dovoljno ovog proizvoda
     - Na stranici /cart izvuci ime proizvoda iz baze, umesto id produkta treba ime proizvoda
 
-Practice 24.6
+Vezba 24.6
     - Na stranici /cart dodati ispis: ime, kolicina, cena po proizvodu, ukupna cena (kolicina x cena)
+
+Vezba 24.11
+    - Napraviti sledece migracije:
+        * Napraviti orders tabelu
+        * Napraviti order_items tabelu
+    -
+
+
+
+Toma poslao za vezbu:
+Aplikacija omogucava vodjenje evidencije o knjigama i autorima. Svaka knjiga ima naslov, autora,
+godinu izdanja, žanr i status (dostupna ili iznajmljena).
+Funkcionalnosti
+1 Kreiranje knjiga i autora.
+2 Pregled svih knjiga sa detaljima.
+3 Pretraga po naslovu i autoru.
+4 Izmena podataka o knjigama i autorima.
+5 Brisanje knjiga i autora.
+
+Tehnologije i pojmovi
+1 Modeli i migracije: Author, Book.
+2 Relacije: Jedan autor više knjiga (one-to-many).
+3 Validacija formi: obavezna polja, jedinstven naslov.
+4 Paginacija za listu knjiga.
+5 Blade šabloni za prikaz i forme.
+6 (opciono) Soft delete za knjige.
