@@ -89,7 +89,20 @@ Vezba 24.11
     - Napraviti sledece migracije:
         * Napraviti orders tabelu
         * Napraviti order_items tabelu
-    -
+
+Vezba 24.14
+    - Dodati dugme 'zavrsi narudzbinu' koje ce upisati u orders i order_items stvari koje treba
+     i uraditi sve ostalo potrebno tokom jedne narudzbine:
+        * Proveriti da li je korpa prazna
+        * Ponovo proveriti da li ima tog proizvoda dovoljno na stanju
+        * Smanjiti stanje tog proizvoda u tabeli products
+        * Isprazniti narudzbinu (korpu) iz sesije
+        * Prikazati Thank you! stranicu gde pise da je narudzbina uspesna
+
+
+
+
+
 
 
 

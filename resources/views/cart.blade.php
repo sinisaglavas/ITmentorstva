@@ -24,6 +24,9 @@
                                 </div>
                     @endforeach
                 </div>
+            <div class="d-flex justify-content-center mt-2">
+                <a href="{{ route('cart.finish') }}" class="btn btn-outline-secondary">Zavrsi narudzbinu</a>
+            </div>
             </div>
         </div>
 @endsection
